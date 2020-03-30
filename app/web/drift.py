@@ -100,6 +100,7 @@ def mailed_drift(did):
         # 不查询直接更新;这一步可以异步来操作
         Wish.query.filter_by(isbn=drift.isbn, uid=drift.requester_id,
                              launched=False).update({Wish.launched: True})
+        send_mail(drift.gifter_email, '您在书途的图书请求心愿已被达成^-^!', 'email/success.html',drift=drift)
     return redirect(url_for('web.pending'))
 
 
@@ -113,6 +114,7 @@ def save_drift(drift_form, current_gift):
         drift.requester_nickname = current_user.nickname
         drift.gifter_nickname = current_gift.user.nickname
         drift.gifter_id = current_gift.user.id
+        drift.gifter_email = current_user.email
 
         book = BookViewModel(current_gift.book)
 

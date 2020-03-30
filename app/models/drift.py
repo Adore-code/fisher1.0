@@ -36,11 +36,14 @@ class Drift(Base):
     #请求者信息
     requester_id = Column(Integer)
     requester_nickname = Column(String(20))
+    gifter_email = Column(String(50))
 
     #赠送者信息
     gifter_id = Column(Integer)
     gift_id = Column(Integer)#对应礼物 id
     gifter_nickname = Column(String(20))
+
+
     ud = Column(String(200))
 
     _pending = Column('pending', SmallInteger, default=1)

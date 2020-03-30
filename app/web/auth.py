@@ -19,6 +19,9 @@ def register():
             user = User()
             user.set_attrs(form.data)
             db.session.add(user)
+        send_mail(form.email.data, '您已注册成功', 'email/register.html',
+                  user=user)
+        flash('注册成功，请重新登录')
         return redirect(url_for('web.login'))  # 重定向
     return render_template('auth/register.html', form=form)
 
