@@ -8,7 +8,7 @@ verify_ssl = true
 [packages]
 flask = "==0.12.2"
 requests = "==2.18.3"
-werkzeug = "==0.12.2"
+werkzeug = "==0.15.3"
 wtforms = "==2.1"
 flask-sqlalchemy = "==2.3.2"
 cymysql = "==0.9.4"
